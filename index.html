@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AM Santarno StockPro | نظام إدارة المخزون والمبيعات</title>
+    
+    <!-- Google Fonts: Cairo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Cairo', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#1e3a8a',
+                            dark: '#0f172a',
+                            green: '#22c55e',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        .hero-gradient {
+            background: radial-gradient(circle at top right, rgba(30, 58, 138, 0.05), transparent),
+                        radial-gradient(circle at bottom left, rgba(34, 197, 94, 0.05), transparent);
+        }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="font-sans bg-slate-50 text-slate-900 selection:bg-brand-blue selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="glass-nav sticky top-0 z-50 border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center gap-2">
+<div class="w-10 h-10 bg-brand-blue rounded-lg flex items-center justify-center shadow-lg shadow-brand-blue/20 overflow-hidden">
+    <img src="LOGO LOGICIEL 2.png" alt="Logo" class="w-full h-full object-cover">
+</div>   <span class="text-xl font-bold text-brand-dark tracking-tight">AM Santarno <span class="text-brand-green">StockPro</span></span>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center gap-8 font-medium">
+                    <a href="#home" class="hover:text-brand-blue transition-colors">الرئيسية</a>
+                    <a href="#about" class="hover:text-brand-blue transition-colors">حول البرنامج</a>
+                    <a href="#features" class="hover:text-brand-blue transition-colors">المميزات</a>
+                    <a href="#contact" class="hover:text-brand-blue transition-colors">تواصل معنا</a>
+                    <button class="bg-brand-blue text-white px-6 py-2.5 rounded-full hover:bg-brand-dark transition-all shadow-lg shadow-brand-blue/20">
+                        تحميل البرنامج
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="p-2 text-slate-600">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200 px-4 py-6 space-y-4">
+            <a href="#home" class="block font-medium hover:text-brand-blue">الرئيسية</a>
+            <a href="#about" class="block font-medium hover:text-brand-blue">حول البرنامج</a>
+            <a href="#features" class="block font-medium hover:text-brand-blue">المميزات</a>
+            <a href="#contact" class="block font-medium hover:text-brand-blue">تواصل معنا</a>
+            <button class="w-full bg-brand-blue text-white px-6 py-3 rounded-xl font-bold">تحميل البرنامج</button>
+        </div>
+    </nav>
+
+    
+
+        <!-- Hero Section -->
+        <section id="home" class="hero-gradient relative pt-20 pb-32 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    <div class="reveal">
+                        <div class="flex gap-3 mb-6">
+                            <span class="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full text-xs font-bold bg-brand-blue/10 text-brand-blue border border-brand-blue/20">
+                                <i data-lucide="wifi-off" class="w-3.5 h-3.5"></i>
+                                يعمل بدون إنترنت
+                            </span>
+                            <span class="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full text-xs font-bold bg-slate-100 text-slate-600 border border-slate-200">
+                                <i data-lucide="monitor" class="w-3.5 h-3.5"></i>
+                                Desktop Software
+                            </span>
+                        </div>
+                        <h1 class="text-4xl md:text-6xl font-extrabold text-brand-dark leading-tight mb-6">
+                            نظام احترافي لإدارة <br />
+                            <span class="text-brand-blue">المخزون والمبيعات</span> على جهازك
+                        </h1>
+                        <p class="text-lg text-slate-600 mb-10 leading-relaxed max-w-xl">
+                            برنامج مكتبي محلي يساعدك على إدارة المخزون والعملاء والموردين والمنتجات بسهولة وبدقة عالية، بدون الحاجة إلى الإنترنت.
+                        </p>
+                        <div class="flex flex-wrap gap-4">
+                         <a href="Filesetup/Setup_Stockpro.exe" download
+   class="flex items-center gap-2 bg-brand-blue text-white px-8 py-4 rounded-xl font-bold hover:bg-brand-dark transition-all shadow-xl shadow-brand-blue/30 group">
+
+    <i data-lucide="download" class="w-5 h-5 group-hover:-translate-y-1 transition-transform"></i>
+    تحميل البرنامج
+
+</a>
+                          <a href="https://wa.me/213697969392?text=مرحبا،%20أرغب%20في%20معلومات%20حول%20برنامج%20StockPro"
+   target="_blank"
+   class="flex items-center gap-2 bg-white text-brand-dark border-2 border-slate-200 px-8 py-4 rounded-xl font-bold hover:border-brand-blue hover:text-brand-blue transition-all">
+    
+    <i data-lucide="message-square" class="w-5 h-5"></i>
+    تواصل معنا
+
+</a>
+                        </div>
+                    </div>
+                    <div class="relative reveal" style="display:flex; flex-direction:column; align-items:center;">
+
+  <!-- Blobs -->
+  <div style="position:absolute;width:280px;height:280px;background:rgba(37,99,235,.12);top:-60px;right:-40px;border-radius:50%;filter:blur(60px);pointer-events:none;"></div>
+  <div style="position:absolute;width:200px;height:200px;background:rgba(34,197,94,.10);bottom:-40px;left:20px;border-radius:50%;filter:blur(60px);pointer-events:none;"></div>
+
+  <!-- Card: Stock -->
+  <div style="position:absolute;top:5%;left:-10px;background:#fff;border-radius:14px;padding:12px 16px;box-shadow:0 8px 32px rgba(15,23,42,.14);display:flex;align-items:center;gap:10px;min-width:160px;z-index:20;animation:floaty 3.8s ease-in-out infinite;">
+    <div style="width:36px;height:36px;border-radius:10px;background:#dbeafe;color:#2563eb;display:flex;align-items:center;justify-content:center;">
+      <i data-lucide="package" style="width:18px;height:18px;"></i>
+    </div>
+    <div>
+      <div style="font-size:12px;color:#0f172a;font-weight:800;">
+        إدارة المخزون والمنتجات
+      </div>
+    </div>
+  </div>
+
+  <!-- Card: Clients -->
+  <div style="position:absolute;top:30%;right:-10px;background:#fff;border-radius:14px;padding:12px 16px;box-shadow:0 8px 32px rgba(15,23,42,.14);display:flex;align-items:center;gap:10px;min-width:160px;z-index:20;animation:floaty 4.2s ease-in-out infinite;animation-delay:.8s;">
+    <div style="width:36px;height:36px;border-radius:10px;background:#dcfce7;color:#16a34a;display:flex;align-items:center;justify-content:center;">
+      <i data-lucide="users" style="width:18px;height:18px;"></i>
+    </div>
+    <div>
+      <div style="font-size:12px;color:#0f172a;font-weight:800;">
+        إدارة العملاء
+      </div>
+    </div>
+  </div>
+
+  <!-- Card: Products -->
+  <div style="position:absolute;bottom:30%;left:-10px;background:#fff;border-radius:14px;padding:12px 16px;box-shadow:0 8px 32px rgba(15,23,42,.14);display:flex;align-items:center;gap:10px;min-width:160px;z-index:20;animation:floaty 3.6s ease-in-out infinite;animation-delay:1.4s;">
+    <div style="width:36px;height:36px;border-radius:10px;background:#ffedd5;color:#ea580c;display:flex;align-items:center;justify-content:center;">
+      <i data-lucide="shopping-cart" style="width:18px;height:18px;"></i>
+    </div>
+    <div>
+      <div style="font-size:12px;color:#0f172a;font-weight:800;">
+        إدارة المنتجات
+      </div>
+    </div>
+  </div>
+
+  <!-- NEW Card: Print Receipts -->
+  <div style="position:absolute;bottom:10%;right:-10px;background:#fff;border-radius:14px;padding:12px 16px;box-shadow:0 8px 32px rgba(15,23,42,.14);display:flex;align-items:center;gap:10px;min-width:160px;z-index:20;animation:floaty 4.5s ease-in-out infinite;animation-delay:2s;">
+    <div style="width:36px;height:36px;border-radius:10px;background:#ede9fe;color:#7c3aed;display:flex;align-items:center;justify-content:center;">
+      <i data-lucide="printer" style="width:18px;height:18px;"></i>
+    </div>
+    <div>
+      <div style="font-size:12px;color:#0f172a;font-weight:800;">
+        طباعة الفواتير
+      </div>
+    </div>
+  </div>
+
+  <!-- Monitor (PC) -->
+  <div style="position:relative;
+              background:linear-gradient(135deg,#2563eb,#1e40af);
+              border-radius:16px 16px 16px 16px;
+              padding:10px;
+              box-shadow:0 0 0 2px #1e3a8a,0 30px 80px rgba(15,23,42,.4);
+              width:100%;
+              max-width:520px;">
+
+    <div style="background:#ffffff;border-radius:10px 10px 0 0;padding:6px 6px 0;">
+      <div style="width:8px;height:8px;background:#334155;border-radius:50%;margin:0 auto 4px;"></div>
+
+      <div style="background:#ffffff;
+                  border-radius:8px;
+                  overflow:hidden;
+                  aspect-ratio:16/10;
+                  border:1px solid #334155;">
+
+        <img src="DASHBOARD.PNG"
+             alt="Dashboard"
+             style="width:100%;
+                    height:100%;
+                    object-fit:fill;
+                    display:block;
+                    border-radius:7px;">
+      </div>
+    </div>
+  </div>
+
+  <!-- Stand -->
+  <div style="width:40px;height:24px;background:linear-gradient(180deg,#c3cbe6,#a5b4dd);clip-path:polygon(20% 0,80% 0,100% 100%,0 100%);"></div>
+  <div style="width:140px;height:14px;background:linear-gradient(180deg,#c1c9e6,#b3c2eb);border-radius:6px;box-shadow:0 4px 12px rgba(0,0,0,.2);"></div>
+
+</div>
+                </div>
+            </div>
+        </section>
+
+    <!-- About Section -->
+  <section id="about" class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="flex flex-col md:flex-row items-center gap-10 max-w-5xl mx-auto">
+
+            <!-- Logo -->
+            <div class="flex-shrink-0">
+                <img src="LOGO LOGICIEL 2.png"
+                     alt="AM Santarno StockPro Logo"
+                     class="w-40 h-40 object-contain">
+            </div>
+
+            <!-- Text -->
+            <div class="text-center md:text-right">
+
+                <h2 class="text-3xl font-bold text-brand-dark mb-6">
+                    حول البرنامج
+                </h2>
+
+                <div class="w-20 h-1.5 bg-brand-green mx-auto md:mx-0 mb-8 rounded-full"></div>
+
+                <p class="text-xl text-slate-600 leading-relaxed">
+                    <strong>AM Santarno StockPro</strong>
+                    هو برنامج مكتبي لإدارة المخزون مصمم لمساعدة الشركات والمتاجر
+                    على تنظيم العمليات اليومية مثل إدارة المنتجات والعملاء
+                    والموردين وتتبع المخزون والديون بسهولة.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-brand-dark mb-4">المميزات والوحدات</h2>
+                <p class="text-slate-500">كل ما تحتاجه لإدارة عملك في مكان واحد</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Stock -->
+                <div class="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl transition-all group">
+                    <div class="mb-6 p-3 bg-brand-blue/5 rounded-xl inline-block text-brand-blue group-hover:bg-brand-blue group-hover:text-white transition-colors">
+                        <i data-lucide="package" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-brand-dark mb-4">المخزون (Stock)</h3>
+                    <ul class="space-y-3 text-slate-600">
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-brand-green"></i>متابعة الكميات المتوفرة</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-brand-green"></i>تنبيهات عند نقص المخزون</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-brand-green"></i>تحديث تلقائي للمخزون</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-brand-green"></i>جرد المخزون بسهولة</li>
+                    </ul>
+                </div>
+
+                <!-- Clients -->
+                <div class="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl transition-all group">
+                    <div class="mb-6 p-3 bg-brand-blue/5 rounded-xl inline-block text-brand-blue group-hover:bg-brand-blue group-hover:text-white transition-colors">
+                        <i data-lucide="users" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-brand-dark mb-4">العملاء (Clients)</h3>
+                    <ul class="space-y-3 text-slate-600">
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-brand-green"></i>إدارة بيانات العملاء</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-brand-green"></i>سجل المشتريات</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-brand-green"></i>متابعة ديون العملاء</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-brand-green"></i>البحث السريع</li>
+                    </ul>
+                </div>
+
+                <!-- Suppliers -->
+                <div class="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl transition-all group">
+                    <div class="mb-6 p-3 bg-brand-blue/5 rounded-xl inline-block text-brand-blue group-hover:bg-brand-blue group-hover:text-white transition-colors">
+                        <i data-lucide="truck" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-brand-dark mb-4">الموردين (Suppliers)</h3>
+                    <ul class="space-y-3 text-slate-600">
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-brand-green"></i>إدارة الموردين</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-brand-green"></i>تسجيل عمليات الشراء</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-brand-green"></i>تتبع الفواتير</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-brand-green"></i>سجل التعاملات</li>
+                    </ul>
+                </div>
+
+                <!-- Products -->
+                <div class="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl transition-all group">
+                    <div class="mb-6 p-3 bg-brand-blue/5 rounded-xl inline-block text-brand-blue group-hover:bg-brand-blue group-hover:text-white transition-colors">
+                        <i data-lucide="shopping-cart" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-brand-dark mb-4">المنتجات (Products)</h3>
+                    <ul class="space-y-3 text-slate-600">
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-brand-green"></i>إضافة وتعديل المنتجات</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-brand-green"></i>إدارة الأسعار</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-brand-green"></i>تصنيف المنتجات</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-brand-green"></i>البحث السريع</li>
+                    </ul>
+                </div>
+
+                <!-- Statistics -->
+                <div class="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl transition-all group">
+                    <div class="mb-6 p-3 bg-brand-blue/5 rounded-xl inline-block text-brand-blue group-hover:bg-brand-blue group-hover:text-white transition-colors">
+                        <i data-lucide="bar-chart-3" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-brand-dark mb-4">الإحصائيات (Statistics)</h3>
+                    <ul class="space-y-3 text-slate-600">
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-brand-green"></i>تقارير المبيعات</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-brand-green"></i>تقارير المخزون</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-brand-green"></i>تحليل الأرباح</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-brand-green"></i>رسوم بيانية</li>
+                    </ul>
+                </div>
+
+                <!-- Credit -->
+                <div class="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl transition-all group">
+                    <div class="mb-6 p-3 bg-brand-blue/5 rounded-xl inline-block text-brand-blue group-hover:bg-brand-blue group-hover:text-white transition-colors">
+                        <i data-lucide="credit-card" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-brand-dark mb-4">الديون (Credit)</h3>
+                    <ul class="space-y-3 text-slate-600">
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-brand-green"></i>متابعة الديون</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-brand-green"></i>تسجيل المدفوعات</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-brand-green"></i>حساب الرصيد</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-brand-green"></i>تقارير الديون</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Section -->
+    <section class="py-24 bg-brand-dark text-white relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-brand-blue/10 -skew-x-12 translate-x-1/4"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-4xl font-bold mb-8">لماذا تختار AM Santarno StockPro ؟</h2>
+                    <div class="grid sm:grid-cols-2 gap-6">
+                        <div class="flex items-center gap-3 bg-white/5 p-4 rounded-xl border border-white/10">
+                            <i data-lucide="check-circle-2" class="w-6 h-6 text-brand-green shrink-0"></i>
+                            <span class="font-medium">يعمل بدون إنترنت</span>
+                        </div>
+                        <div class="flex items-center gap-3 bg-white/5 p-4 rounded-xl border border-white/10">
+                            <i data-lucide="check-circle-2" class="w-6 h-6 text-brand-green shrink-0"></i>
+                            <span class="font-medium">سريع وسهل الاستخدام</span>
+                        </div>
+                        <div class="flex items-center gap-3 bg-white/5 p-4 rounded-xl border border-white/10">
+                            <i data-lucide="check-circle-2" class="w-6 h-6 text-brand-green shrink-0"></i>
+                            <span class="font-medium">مناسب للمحلات والشركات</span>
+                        </div>
+                        <div class="flex items-center gap-3 bg-white/5 p-4 rounded-xl border border-white/10">
+                            <i data-lucide="check-circle-2" class="w-6 h-6 text-brand-green shrink-0"></i>
+                            <span class="font-medium">آمن على بياناتك</span>
+                        </div>
+                        <div class="flex items-center gap-3 bg-white/5 p-4 rounded-xl border border-white/10">
+                            <i data-lucide="check-circle-2" class="w-6 h-6 text-brand-green shrink-0"></i>
+                            <span class="font-medium">يوفر الوقت والجهد</span>
+                        </div>
+                        <div class="flex items-center gap-3 bg-white/5 p-4 rounded-xl border border-white/10">
+                            <i data-lucide="check-circle-2" class="w-6 h-6 text-brand-green shrink-0"></i>
+                            <span class="font-medium">نظام موثوق</span>
+                        </div>
+                    </div>
+                </div>
+               <div class="relative reveal w-full max-w-4xl mx-auto">
+
+   <!-- Monitor -->
+<div style="position:relative;
+            background:#1e293b;
+            border-radius:16px 16px 16px 16px;
+            padding:10px;
+            box-shadow:0 0 0 2px #334155,0 30px 80px rgba(15,23,42,.4);
+            width:100%;
+            max-width:600px;">
+
+    <div style="background:#0f172a;border-radius:10px 10px 0 0;padding:6px 6px 0;">
+        <div style="width:8px;height:8px;background:#334155;border-radius:50%;margin:0 auto 4px;"></div>
+
+        <!-- Screen -->
+        <div style="background:#1e293b;
+                    border-radius:8px;
+                    overflow:hidden;
+                    aspect-ratio:16/10;
+                    border:1px solid #334155;
+                    position:relative;">
+
+            <!-- Slides -->
+            <img src="LOgin page.PNG"
+                 class="slide w-full h-full object-fill absolute inset-0 opacity-100 transition-opacity duration-700">
+
+            <img src="DASHBOARD.PNG"
+                 class="slide w-full h-full object-fill absolute inset-0 opacity-0 transition-opacity duration-700">
+
+            <img src="DAshboard2.PNG"
+                 class="slide w-full h-full object-fill absolute inset-0 opacity-0 transition-opacity duration-700">
+
+            <img src="Ventes.PNG"
+                 class="slide w-full h-full object-fill absolute inset-0 opacity-0 transition-opacity duration-700">
+
+        </div>
+    </div>
+</div>
+
+<!-- Stand -->
+<div style="width:40px;height:24px;background:linear-gradient(180deg,#334155,#1e293b);clip-path:polygon(20% 0,80% 0,100% 100%,0 100%);"></div>
+<div style="width:140px;height:14px;background:linear-gradient(180deg,#334155,#1e293b);border-radius:6px;box-shadow:0 4px 12px rgba(0,0,0,.2);"></div>
+
+<script>
+let slides = document.querySelectorAll(".slide");
+let current = 0;
+
+function showSlide(index) {
+    slides.forEach((slide, i) => {
+        slide.style.opacity = i === index ? "1" : "0";
+    });
+}
+
+setInterval(() => {
+    current = (current + 1) % slides.length;
+    showSlide(current);
+}, 3000);
+</script>
+            </div>
+        </div>
+    </section>
+
+    <!-- Target Businesses Section -->
+    <section class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-brand-dark mb-4">مناسب لـ</h2>
+                <p class="text-slate-500">حلول مخصصة لمختلف قطاعات الأعمال</p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+                <div class="flex flex-col items-center gap-4 p-6 rounded-2xl bg-slate-50 border border-slate-100 hover:border-brand-blue hover:bg-white hover:shadow-lg transition-all text-center group">
+                    <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center text-brand-blue shadow-sm group-hover:bg-brand-blue group-hover:text-white transition-colors">
+                        <i data-lucide="store" class="w-6 h-6"></i>
+                    </div>
+                    <span class="font-bold text-brand-dark">المحلات التجارية</span>
+                </div>
+                <div class="flex flex-col items-center gap-4 p-6 rounded-2xl bg-slate-50 border border-slate-100 hover:border-brand-blue hover:bg-white hover:shadow-lg transition-all text-center group">
+                    <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center text-brand-blue shadow-sm group-hover:bg-brand-blue group-hover:text-white transition-colors">
+                        <i data-lucide="warehouse" class="w-6 h-6"></i>
+                    </div>
+                    <span class="font-bold text-brand-dark">المستودعات</span>
+                </div>
+                <div class="flex flex-col items-center gap-4 p-6 rounded-2xl bg-slate-50 border border-slate-100 hover:border-brand-blue hover:bg-white hover:shadow-lg transition-all text-center group">
+                    <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center text-brand-blue shadow-sm group-hover:bg-brand-blue group-hover:text-white transition-colors">
+                        <i data-lucide="building-2" class="w-6 h-6"></i>
+                    </div>
+                    <span class="font-bold text-brand-dark">تجار الجملة</span>
+                </div>
+              
+                <div class="flex flex-col items-center gap-4 p-6 rounded-2xl bg-slate-50 border border-slate-100 hover:border-brand-blue hover:bg-white hover:shadow-lg transition-all text-center group">
+                    <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center text-brand-blue shadow-sm group-hover:bg-brand-blue group-hover:text-white transition-colors">
+                        <i data-lucide="store" class="w-6 h-6"></i>
+                    </div>
+                    <span class="font-bold text-brand-dark">متاجر التجزئة</span>
+                </div>
+                <div class="flex flex-col items-center gap-4 p-6 rounded-2xl bg-slate-50 border border-slate-100 hover:border-brand-blue hover:bg-white hover:shadow-lg transition-all text-center group">
+                    <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center text-brand-blue shadow-sm group-hover:bg-brand-blue group-hover:text-white transition-colors">
+                        <i data-lucide="briefcase" class="w-6 h-6"></i>
+                    </div>
+                    <span class="font-bold text-brand-dark">الشركات الصغيرة والمتوسطة</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  <!-- CTA Section -->
+<section class="py-20">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-gradient-to-br from-brand-blue via-[#1a3272] to-brand-dark rounded-3xl p-12 text-center text-white shadow-2xl relative overflow-hidden">
+            
+            <!-- Background decorations -->
+            <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+                <div class="absolute top-10 left-10 w-32 h-32 border-4 border-white rounded-full"></div>
+                <div class="absolute bottom-10 right-10 w-48 h-48 border-4 border-white rounded-full"></div>
+                <div class="absolute top-1/2 left-1/4 w-20 h-20 border-2 border-white rounded-full"></div>
+            </div>
+
+            <!-- Glow blob -->
+            <div class="absolute top-0 right-1/4 w-64 h-64 bg-brand-green/20 rounded-full blur-3xl pointer-events-none"></div>
+
+            <!-- LOGO / BRAND BLOCK -->
+            <div class="relative z-10 flex flex-col items-center mb-10">
+                <!-- Logo badge -->
+            <div class="relative z-10 flex flex-col items-center mb-10">
+    <!-- Logo badge — BIGGER -->
+    <div class="flex items-center gap-4 bg-white/10 border border-white/20 backdrop-blur-sm px-8 py-5 rounded-3xl mb-6 shadow-xl">
+  <img src="LOGO LOGICIEL 2.png" class="w-20 h-20 object-fill">
+        <div class="text-right">
+            <div class="text-sm text-white/60 font-medium tracking-widest uppercase mb-1">AM Santarno</div>
+            <div class="text-3xl font-extrabold tracking-tight leading-tight">
+                Stock<span class="text-brand-green">Pro</span>
+            </div>
+            <div class="text-xs text-white/40 mt-1">نظام إدارة المخزون والمبيعات</div>
+        </div>
+    </div>
+
+    <!-- Tagline pill -->
+    <span class="inline-flex items-center gap-2 bg-brand-green/20 border border-brand-green/40 text-brand-green text-xs font-bold px-4 py-1.5 rounded-full">
+        <i data-lucide="wifi-off" class="w-3.5 h-3.5"></i>
+        برنامج محلي · يعمل بدون إنترنت
+    </span>
+</div>
+
+                <!-- Tagline pill -->
+              
+            </div>
+
+            <!-- Text -->
+            <div class="relative z-10">
+                <h2 class="text-4xl font-extrabold mb-4 leading-tight">
+                    ابدأ إدارة مخزونك <span class="text-brand-green">اليوم</span>
+                </h2>
+                <p class="text-lg text-white/70 mb-10 max-w-2xl mx-auto leading-relaxed">
+                    انضم إلى مئات الشركات التي تثق بـ <span class="text-white font-bold">AM Santarno StockPro</span> لتنظيم أعمالها وزيادة أرباحها.
+                </p>
+            </div>
+
+            <!-- Stats row -->
+            <div class="relative z-10 flex flex-wrap justify-center gap-8 mb-10">
+                <div class="flex flex-col items-center">
+                    <span class="text-3xl font-extrabold text-white">+50</span>
+                    <span class="text-xs text-white/50 font-medium mt-1">عميل مستخدم</span>
+                </div>
+                <div class="w-px bg-white/10 self-stretch"></div>
+                <div class="flex flex-col items-center">
+                    <span class="text-3xl font-extrabold text-brand-green">100%</span>
+                    <span class="text-xs text-white/50 font-medium mt-1">يعمل بدون إنترنت</span>
+                </div>
+                <div class="w-px bg-white/10 self-stretch"></div>
+                <div class="flex flex-col items-center">
+                    <span class="text-3xl font-extrabold text-white">6</span>
+                    <span class="text-xs text-white/50 font-medium mt-1">وحدات متكاملة</span>
+                </div>
+            </div>
+
+            <!-- Buttons -->
+            <div class="relative z-10 flex flex-wrap justify-center gap-4">
+               <a href="Filesetup/Setup_Stockpro.exe" download>
+    <button class="flex items-center gap-2 bg-white text-brand-blue px-8 py-4 rounded-xl font-bold hover:bg-brand-green hover:text-white transition-all shadow-lg group">
+        <i data-lucide="download" class="w-5 h-5 group-hover:-translate-y-1 transition-transform"></i>
+        تحميل البرنامج
+    </button>
+</a>
+              <a href="https://wa.me/213555000000?text=مرحبا، أريد طلب عرض تجريبي لبرنامج AM Santarno StockPro" target="_blank"
+    class="flex items-center gap-2 bg-transparent border-2 border-white/30 text-white px-8 py-4 rounded-xl font-bold hover:bg-white/10 transition-all">
+    <i data-lucide="play-circle" class="w-5 h-5"></i>
+    طلب عرض تجريبي
+</a>
+
+<a href="https://wa.me/213555000000?text=مرحبا، أريد التواصل معكم بخصوص برنامج AM Santarno StockPro" target="_blank"
+    class="flex items-center gap-2 bg-brand-green text-white px-8 py-4 rounded-xl font-bold hover:bg-white hover:text-brand-green transition-all shadow-lg">
+    <i data-lucide="message-square" class="w-5 h-5"></i>
+    تواصل معنا
+</a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16">
+                <div>
+                    <h2 class="text-3xl font-bold text-brand-dark mb-8">تواصل معنا</h2>
+                    <div class="space-y-8">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-brand-blue shadow-sm shrink-0">
+                                <i data-lucide="phone" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-500 mb-1">رقم الهاتف</h4>
+                                <p class="text-xl font-bold text-brand-dark" dir="ltr">+213 697 96 93 92</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-brand-blue shadow-sm shrink-0">
+                                <i data-lucide="mail" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-500 mb-1">البريد الإلكتروني</h4>
+                                <p class="text-xl font-bold text-brand-dark">aio.tec.dz@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-brand-blue shadow-sm shrink-0">
+                                <i data-lucide="map-pin" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-500 mb-1">العنوان</h4>
+                                <p class="text-xl font-bold text-brand-dark"></p>
+                             ولاية سطيف
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-10 rounded-3xl shadow-xl border border-slate-100">
+                    <h3 class="text-2xl font-bold mb-6">أرسل لنا رسالة</h3>
+                    <form class="space-y-6">
+                        <div class="grid sm:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-bold text-slate-700 mb-2">الاسم الكامل</label>
+                                <input type="text" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-blue outline-none transition-all">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold text-slate-700 mb-2">رقم الهاتف</label>
+                                <input type="text" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-blue outline-none transition-all">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-2">الرسالة</label>
+                            <textarea rows="4" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-blue outline-none transition-all resize-none"></textarea>
+                        </div>
+                        <button type="button" class="w-full bg-brand-blue text-white py-4 rounded-xl font-bold hover:bg-brand-dark transition-all shadow-lg shadow-brand-blue/20">
+                            إرسال الرسالة
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brand-dark text-white pt-20 pb-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-12 mb-16">
+                <div>
+                    <div class="flex items-center gap-2 mb-6">
+                        <div class="w-10 h-10 bg-brand-blue rounded-lg flex items-center justify-center text-white font-bold text-xl">AM</div>
+                        <span class="text-xl font-bold tracking-tight">AM Santarno <span class="text-brand-green">StockPro</span></span>
+                    </div>
+                    <p class="text-white/60 leading-relaxed">
+                        الحل الأمثل لإدارة المخزون والمبيعات للشركات الصغيرة والمتوسطة. نظام مكتبي قوي يعمل بدون إنترنت لضمان استمرارية عملك.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-6">روابط سريعة</h4>
+                    <ul class="space-y-4 text-white/60">
+                        <li><a href="#home" class="hover:text-brand-green transition-colors">الرئيسية</a></li>
+                        <li><a href="#about" class="hover:text-brand-green transition-colors">حول البرنامج</a></li>
+                        <li><a href="#features" class="hover:text-brand-green transition-colors">المميزات</a></li>
+                        <li><a href="#contact" class="hover:text-brand-green transition-colors">تواصل معنا</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-6">تحميل البرنامج</h4>
+                    <p class="text-white/60 mb-6">احصل على نسختك التجريبية الآن وابدأ في تنظيم مخزونك.</p>
+                    <button class="flex items-center gap-2 bg-brand-blue text-white px-6 py-3 rounded-xl font-bold hover:bg-brand-green transition-all">
+                        <i data-lucide="download" class="w-5 h-5"></i>
+                        تحميل مباشر
+                    </button>
+                </div>
+            </div>
+            <div class="pt-10 border-t border-white/10 text-center text-white/40 text-sm">
+                <p>© 2026 AM Santarno StockPro — جميع الحقوق محفوظة</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu on link click
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Simple Reveal on Scroll
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-10');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            el.classList.add('transition-all', 'duration-1000', 'opacity-0', 'translate-y-10');
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
